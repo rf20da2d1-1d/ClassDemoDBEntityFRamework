@@ -36,6 +36,20 @@ namespace ClassDemoDBEntityFRamework.Pages
         public IActionResult OnPost()
         {
             _persistence.Create(Student);
+
+            /*
+             * Dirty trick to see the persitence works - without too much gui work
+             */
+            _students = _persistence.GetAll();
+            int maxId = _students.Max(s => s.Id);
+            Student s = _persistence.GetOne(maxId);
+            s.EMail = "dummy@edu.easj.dk";
+            _persistence.Update(maxId, s);
+            _persistence.Delete(maxId);
+            /*
+             * END dirty work
+             */
+
             return RedirectToPage("Index");
         }
 

@@ -10,6 +10,12 @@ namespace ClassDemoDBEntityFRamework.services
     {
         List<Student> GetAll();
 
+        Student GetOne(int id);
+
         void Create(Student student);
+
+        void Delete(int id);
+
+        void Update(int id, Student student);
     }
 }

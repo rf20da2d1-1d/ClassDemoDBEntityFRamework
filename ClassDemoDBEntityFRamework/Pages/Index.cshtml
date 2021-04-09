@@ -1,0 +1,45 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Students</h1>
+    <table class="table">
+        <thead class="table-primary">
+        <th>Id</th>
+        <th>Navn</th>
+        <th>E-mail</th>
+        <th>Klasse</th>
+        </thead>
+        <tbody>
+        @foreach (var t in Model.Students)
+        {
+            <tr>
+                <td>@t.Id</td>
+                <td>@t.Name</td>
+                <td>@t.EMail</td>
+                <td>@t.ClassId</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    <p>Opret ny studerende</p>
+    <form method="post">
+        <div class="form-group">
+            Navn : <input asp-for="Student.Name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input asp-for="Student.EMail" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Id på klasse</label>
+            <input asp-for="Student.ClassId" class="form-control" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Create Student" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
